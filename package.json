@@ -15,7 +15,7 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "typecheck": "pnpm -r --if-present typecheck",
+    "typecheck": "pnpm --filter @support-widget/ai-helper build && pnpm -r --if-present typecheck",
     "test": "pnpm --filter @support-widget/ai-helper test",
     "test:watch": "pnpm --filter @support-widget/ai-helper test:watch",
     "size": "pnpm --filter @support-widget/ai-helper size",
