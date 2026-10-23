@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cornerlark — AI helper visual reference</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,*::before,*::after{box-sizing:border-box}
+      html,body{margin:0;height:100%;background:#050505;overflow:hidden}
+      body{font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#f5f5f5;-webkit-font-smoothing:antialiased}
+      .stage{min-height:100vh;border:1px solid #262626;background:#0a0a0a;display:flex;flex-direction:column;position:relative}
+      .stage-top{height:54px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;border-bottom:1px solid #262626;background:#0e0e0e}
+      .stage-top strong{font-size:15px;font-weight:600;letter-spacing:-.01em}
+      .stage-top span{font-size:13px;color:#8a8a8a}
+      .stage-nav{height:40px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;border-bottom:1px solid #1c1c1c}
+      .stage-nav .left{display:flex;align-items:center;gap:12px}
+      .stage-nav .right{display:flex;gap:12px}
+      .dot{width:16px;height:16px;border-radius:50%;background:#2c2c2c}
+      .sk{display:block;height:8px;border-radius:99px;background:#262626}
+      .stage-body{flex:1;display:flex}
+      .stage-side{width:160px;border-right:1px solid #1c1c1c;padding:16px;display:flex;flex-direction:column;gap:14px}
+      .stage-main{flex:1;padding:32px 32px;display:flex;flex-direction:column;gap:18px;max-width:900px}
+      .sk-h1{height:20px;width:336px;max-width:100%;border-radius:8px;background:#2a2a2a}
+      .sk-h2{height:14px;width:224px;border-radius:7px;background:#2a2a2a;margin-top:14px}
+      .sk-box{height:76px;border:1px solid #262626;border-radius:8px;background:#0d0d0d}
+      @media (max-width:760px){.stage-side{display:none}.stage-main{padding:24px 18px}}
+    </style>
+  </head>
+  <body>
+    <div class="stage" aria-hidden="true">
+      <div class="stage-top"><strong>On your docs site</strong><span>Widget open</span></div>
+      <div class="stage-nav">
+        <div class="left"><span class="dot"></span><span class="sk" style="width:64px"></span></div>
+        <div class="right"><span class="sk" style="width:40px"></span><span class="sk" style="width:40px"></span></div>
+      </div>
+      <div class="stage-body">
+        <aside class="stage-side">
+          <span class="sk" style="width:102px"></span><span class="sk" style="width:78px"></span>
+          <span class="sk" style="width:86px"></span><span class="sk" style="width:94px"></span>
+          <span class="sk" style="width:64px"></span><span class="sk" style="width:84px"></span>
+        </aside>
+        <main class="stage-main">
+          <div class="sk-h1"></div>
+          <span class="sk" style="width:380px;max-width:100%"></span>
+          <span class="sk" style="width:360px;max-width:100%"></span>
+          <span class="sk" style="width:340px;max-width:100%"></span>
+          <div class="sk-h2"></div>
+          <div class="sk-box"></div>
+          <span class="sk" style="width:380px;max-width:100%"></span>
+          <span class="sk" style="width:360px;max-width:100%"></span>
+          <div class="sk-h2" style="width:270px"></div>
+          <span class="sk" style="width:300px;max-width:100%"></span>
+          <span class="sk" style="width:260px;max-width:100%"></span>
+        </main>
+      </div>
+    </div>
+
+    <script>
+      // Seed a short conversation so the demo opens in the exact reference state.
+      try {
+        const now = Date.now();
+        localStorage.setItem(
+          'aih:conversation:v1',
+          JSON.stringify([
+            {
+              id: 'demo-user-1',
+              role: 'user',
+              content: 'How do I install it?',
+              createdAt: now - 120000,
+            },
+            {
+              id: 'demo-bot-1',
+              role: 'assistant',
+              content:
+                'Run the install command from the Quick start page, then import the component. It takes about two minutes.',
+              createdAt: now - 110000,
+            },
+            {
+              id: 'demo-user-2',
+              role: 'user',
+              content: 'Is there a free plan?',
+              createdAt: now - 60000,
+            },
+          ]),
+        );
+      } catch {}
+    </script>
+
+    <script
+      src="/embed.js"
+      data-endpoint="/api/chat"
+      data-title="Cornerlark help"
+      data-subtitle="Usually replies at once"
+      data-logo="/cornerlark.svg"
+      data-welcome-message="Hi! Ask me anything about Cornerlark."
+      data-suggestions="How do I install it?|Is there a free plan?|Talk to a human|What frameworks work?"
+      data-theme="dark"
+      data-placeholder="Ask a question"
+      data-default-open="true"
+      data-hide-suggestions-after-first-message="false"
+      data-metadata='{"page":"ui-reference"}'
+      defer
+    ></script>
+  </body>
+</html>

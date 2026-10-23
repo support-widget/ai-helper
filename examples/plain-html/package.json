@@ -1,0 +1,14 @@
+{
+  "name": "@support-widget/example-plain-html",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node server.mjs",
+    "start": "node server.mjs",
+    "build": "node -e \"console.log('plain-html demo uses the prebuilt widget/embed.global.js')\""
+  },
+  "dependencies": {
+    "@support-widget/ai-helper": "workspace:*"
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "name": "@support-widget/ai-helper",
+  "version": "0.1.0",
+  "description": "A polished, themeable floating AI help widget with streaming responses, a Shadow DOM UI, and framework-agnostic server helpers.",
+  "keywords": [
+    "ai",
+    "chat-widget",
+    "react",
+    "support",
+    "assistant",
+    "anthropic",
+    "shadow-dom"
+  ],
+  "license": "MIT",
+  "author": "AI Helper contributors",
+  "homepage": "https://github.com/support-widget/ai-helper#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/support-widget/ai-helper.git",
+    "directory": "packages/widget"
+  },
+  "bugs": {
+    "url": "https://github.com/support-widget/ai-helper/issues"
+  },
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "unpkg": "./dist/embed.global.js",
+  "jsdelivr": "./dist/embed.global.js",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./server": {
+      "import": {
+        "types": "./dist/server/index.d.ts",
+        "default": "./dist/server/index.js"
+      },
+      "require": {
+        "types": "./dist/server/index.d.cts",
+        "default": "./dist/server/index.cjs"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=18.18"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "scripts": {
+    "build": "tsup && node scripts/postbuild.mjs",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "size": "size-limit",
+    "prepublishOnly": "pnpm typecheck && pnpm build && pnpm test && pnpm size"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.2.0",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@size-limit/file": "^14.3.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.3",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "jsdom": "^27.0.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "size-limit": "^14.3.0",
+    "tsup": "^9.0.0",
+    "typescript": "^5.7.2",
+    "vitest": "^5.0.5"
+  },
+  "size-limit": [
+    {
+      "name": "client (React excluded)",
+      "path": "dist/index.js",
+      "limit": "40 kB",
+      "gzip": true
+    }
+  ]
+}
